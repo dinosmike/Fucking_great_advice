@@ -6,7 +6,7 @@
 Скачать и запустить [FuckingGreatAdvice.exe](https://github.com/dinosmike/Fucking_great_advice/releases/tag/FuckingGreatAdvice_1_0) (версия 1.0)
 
 ## Скриншот
-![Охуенный блять скриншот](https://images2.imgbox.com/fa/10/Rh4gnEbh_o.jpg)
+![Охуенный блять скриншот](https://images2.imgbox.com/f3/b2/bjZXIqRs_o.png)
 
 ## Что умеет
 
