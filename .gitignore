@@ -1,0 +1,20 @@
+## Build output
+**/bin/
+**/obj/
+
+## Rider / VS / VS Code / Cursor
+.vs/
+.idea/
+.vscode/
+.cursor/terminals/
+.cursor/agent-transcripts/
+
+## OS
+Thumbs.db
+Desktop.ini
+
+## Logs
+*.log
+
+# Keep release artifact folder in repo if you want it checked in
+!publish/

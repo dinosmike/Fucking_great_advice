@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <OutputType>WinExe</OutputType>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationTitle>Fucking Great Advice</ApplicationTitle>
+    <AssemblyName>FuckingGreatAdvice</AssemblyName>
+    <RootNamespace>FuckingGreatAdvice</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\*.json" />
+    <!-- Трей «нет связи»: PNG → Icon в коде (EmbeddedResource). -->
+    <EmbeddedResource Include="Assets\offline.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\exit.svg" />
+    <Resource Include="app.ico" />
+    <Resource Include="Fonts\Helvetica LT Pro UltraCompressed.otf" />
+    <Resource Include="Fonts\RobotoCondensed-Bold.ttf" />
+    <Resource Include="Fonts\segoeui.ttf" />
+    <Resource Include="Fonts\segoeuib.ttf" />
+    <Resource Include="Fonts\segoeuil.ttf" />
+    <Resource Include="Fonts\segoeuisl.ttf" />
+    <Resource Include="Fonts\SegMDL2.ttf" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <!-- Отключить: dotnet build -c Release -p:RunReleaseBatAfterBuild=false -->
+    <RunReleaseBatAfterBuild Condition="'$(RunReleaseBatAfterBuild)' == ''">true</RunReleaseBatAfterBuild>
+  </PropertyGroup>
+
+  <!-- После Release-сборки — build-release.bat в корне репо (publish + старт exe). Не в CI. Вложенный publish в .bat: -p:RunReleaseBatAfterBuild=false. -->
+  <Target Name="RunReleaseBatAfterReleaseBuild"
+          AfterTargets="Build"
+          Condition="'$(RunReleaseBatAfterBuild)' == 'true'
+                      and '$(Configuration)' == 'Release'
+                      and '$(DesignTimeBuild)' != 'true'
+                      and '$(CI)' != 'true'">
+    <Message Importance="high" Text="Running build-release.bat..." />
+    <Exec Command="&quot;$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\build-release.bat'))&quot;"
+          WorkingDirectory="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..'))" />
+  </Target>
+</Project>
