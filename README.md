@@ -3,10 +3,10 @@
 Небольшое Windows-приложение для легендарного сервиса советов [fucking-great-advice.ru](https://fucking-great-advice.ru/), которое показывает советы в виде текстового оверлея поверх рабочего стола. Советы можно запрашивать вручную из трея, а также показывать по при запуске или по таймеру. Работает через официальное API.
 
 ## Скачать и запустить
-Скачать и запустить FuckingGreatAdvice.exe (версия 1.0)
+Скачать и запустить [FuckingGreatAdvice.exe](https://github.com/dinosmike/Fucking_great_advice/releases/tag/FuckingGreatAdvice_1_0) (версия 1.0)
 
 ## Скриншот
-будет тут
+![Охуенный блять скриншот](https://images2.imgbox.com/fa/10/Rh4gnEbh_o.jpg)
 
 ## Что умеет
 
