@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Drawing;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using FuckingGreatAdvice.Services;
@@ -128,12 +129,62 @@ public sealed class TrayService : IDisposable
 
     private ContextMenuStrip BuildContextMenu()
     {
-        var menu = new ContextMenuStrip();
+        var menu = new ContextMenuStrip
+        {
+            ShowImageMargin = false,
+            ShowCheckMargin = false
+        };
+        menu.Items.Add(CreateTrayMenuHeader(menu));
+        menu.Items.Add(new ToolStripSeparator());
+
         menu.Items.Add(LocalizationService.T("Tray.MenuSettings"), null, (_, _) => ShowSettings());
         menu.Items.Add(LocalizationService.T("Tray.MenuRequestAdvice"), null, (_, _) => RequestAdvice());
         menu.Items.Add(new ToolStripSeparator());
         menu.Items.Add(LocalizationService.T("Tray.MenuExit"), null, (_, _) => ExitApp());
         return menu;
+    }
+
+    private static ToolStripItem CreateTrayMenuHeader(ContextMenuStrip menu)
+    {
+        var text = LocalizationService.T("Tray.MenuHeader");
+        var lbl = new TrayMenuHeaderLabel
+        {
+            Text = text,
+            AutoSize = true,
+            ForeColor = System.Drawing.Color.Black,
+            BackColor = System.Drawing.Color.Transparent,
+            TabStop = false,
+            Cursor = Cursors.Default,
+            Padding = new Padding(0, 4, 8, 2),
+            TextAlign = ContentAlignment.MiddleLeft,
+            Font = new System.Drawing.Font(
+                System.Drawing.SystemFonts.MenuFont?.FontFamily ?? new System.Drawing.FontFamily("Segoe UI"),
+                6f,
+                System.Drawing.FontStyle.Bold,
+                System.Drawing.GraphicsUnit.Point)
+        };
+
+        lbl.Click += (_, _) =>
+        {
+            menu.Close();
+            InvokeOnUi(static () => About.Show(null));
+        };
+
+        return new ToolStripControlHost(lbl)
+        {
+            AutoSize = true,
+            Padding = Padding.Empty,
+            Margin = Padding.Empty
+        };
+    }
+
+    /// <summary>Заголовок меню: не в Tab-цепочке; клик — «О программе».</summary>
+    private sealed class TrayMenuHeaderLabel : Label
+    {
+        public TrayMenuHeaderLabel()
+        {
+            SetStyle(ControlStyles.Selectable, false);
+        }
     }
 
     private void OnNotifyIconMouseClick(object? sender, MouseEventArgs e)
