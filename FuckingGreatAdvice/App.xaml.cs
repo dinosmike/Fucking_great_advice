@@ -45,6 +45,16 @@ public partial class App : System.Windows.Application
         var startupSettings = SettingsStorage.Load();
         AutostartService.SetEnabled(startupSettings.AutostartEnabled);
 
+        // Модуль ReUpdate: автообновление с GitHub и «Что нового» (см. ReUpdate\КАК ПОДКЛЮЧИТЬ.md).
+        ReUpdate.ReUpdateConfig.Owner = "dinosmike";
+        ReUpdate.ReUpdateConfig.Repo = "Fucking_great_advice";
+        ReUpdate.ReUpdateConfig.AssetName = "FuckingGreatAdvice.exe";
+        ReUpdate.ReUpdateConfig.AppDataFolderName = "FuckingGreatAdvice";
+        ReUpdate.ReUpdateConfig.Language = () => LocalizationService.CurrentLanguageCode;
+        ReUpdate.ReUpdateConfig.AutoUpdateEnabled = () => SettingsStorage.Load().AutoUpdate;
+        ReUpdate.Updater.CleanupAfterUpdate();
+        ReUpdate.WhatsNewState.Initialize();
+
         ShutdownMode = ShutdownMode.OnExplicitShutdown;
         base.OnStartup(e);
 
@@ -61,6 +71,8 @@ public partial class App : System.Windows.Application
             AdviceService.TryScheduleStartupTip();
             AdvicePeriodicTimer.ApplyFromSettings();
         }, DispatcherPriority.ApplicationIdle);
+
+        ReUpdate.Updater.Start();
     }
 
     private static void OpenSettingsFromSecondInstance()

@@ -119,6 +119,7 @@ public partial class SettingsWindow
 
         AutostartCheck.IsChecked = settings.AutostartEnabled;
         AdviceOnStartupCheck.IsChecked = settings.Advice.ShowOnStartup;
+        AutoUpdateCheck.IsChecked = settings.AutoUpdate;
 
         _adviceTimerRowLoading = true;
         AdviceTimerCheck.IsChecked = settings.Advice.TimerEnabled;
@@ -132,6 +133,7 @@ public partial class SettingsWindow
     {
         _settings.AutostartEnabled = AutostartCheck.IsChecked == true;
         _settings.Advice.ShowOnStartup = AdviceOnStartupCheck.IsChecked == true;
+        _settings.AutoUpdate = AutoUpdateCheck.IsChecked == true;
         _settings.Advice.TimerEnabled = AdviceTimerCheck.IsChecked == true;
         _settings.Advice.TimerIntervalMinutes = ParseIntervalMinutesFromUi();
         _settings.UiLanguage = AppLanguageCatalog.Normalize(LanguageCombo.SelectedValue as string ?? _settings.UiLanguage);

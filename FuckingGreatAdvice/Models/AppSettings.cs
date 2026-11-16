@@ -33,6 +33,13 @@ public sealed class AppSettings
     }
 
     [JsonIgnore]
+    public bool AutoUpdate
+    {
+        get => StartupAndWindow.AutoUpdate;
+        set => StartupAndWindow.AutoUpdate = value;
+    }
+
+    [JsonIgnore]
     public string? UiLanguage
     {
         get => Ui.Language;

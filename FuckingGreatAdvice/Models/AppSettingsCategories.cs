@@ -8,6 +8,9 @@ public sealed class StartupWindowSettings
 
     [JsonPropertyName("askOnExit")]
     public bool AskOnExit { get; set; } = true;
+
+    /// <summary>Галочка «Проверять обновления» (модуль ReUpdate).</summary>
+    public bool AutoUpdate { get; set; } = true;
 }
 
 public sealed class UiAppearanceSettings

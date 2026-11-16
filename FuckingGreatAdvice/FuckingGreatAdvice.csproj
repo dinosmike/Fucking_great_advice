@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
     <OutputType>WinExe</OutputType>
     <ApplicationIcon>app.ico</ApplicationIcon>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -20,6 +20,9 @@
     <EmbeddedResource Include="Localization\*.json" />
     <!-- Трей «нет связи»: PNG → Icon в коде (EmbeddedResource). -->
     <EmbeddedResource Include="Assets\offline.png" />
+    <!-- Модуль ReUpdate: история версий для окна «Что нового» (см. ReUpdate\КАК ПОДКЛЮЧИТЬ.md).
+         Condition — пока changelog.json не создан отдельно, сборка не падает. -->
+    <EmbeddedResource Include="..\changelog.json" LogicalName="changelog.json" Condition="Exists('..\changelog.json')" />
   </ItemGroup>
 
   <ItemGroup>
